@@ -100,7 +100,7 @@ end_duel:
 
 halaman_league:
 echo "Buka halaman league\n";
-$out = getUrl("http://tiwar-id.net/league/");
+$out = getUrl($baseURL .  "/league/");
 
 $html = str_get_html($out);
 
@@ -122,7 +122,7 @@ foreach($html->find('div.block_zero') as $row) {
 		if(strpos($url,"league/takeReward")) {
 			echo "Take reward\n";
 
-			$url = "http://tiwar-id.net$url";
+			$url = $baseURL . $url;
 			echo $url . "\n";
 			$out = getUrl($url,$baseURL."/league");
 			goto end_league;
@@ -236,7 +236,7 @@ foreach($html->find('a.btn') as $row) {
 
 if(strpos($url,"quest/end")) {
 	echo "Ada quest\n";
-	$url = "http://tiwar-id.net$url";
+	$url = $baseURL . $url;
 	echo $url . "\n";
 	$out = getUrl($url,$baseURL . "/quest");
 
@@ -259,7 +259,7 @@ foreach($html->find('a.btn') as $row) {
 
 if(@strpos($url,"reward")) {
 	echo "Ada reward\n";
-	$url = "http://tiwar-id.net$url";
+	$url = $baseURL . $url;
 	echo $url . "\n";
 	$out = getUrl($url,$baseURL . "/relic");
 	unset($url);

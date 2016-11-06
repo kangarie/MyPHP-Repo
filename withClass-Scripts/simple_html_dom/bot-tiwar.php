@@ -3,6 +3,8 @@ date_default_timezone_set("Asia/Jakarta");
 require "simple_html_dom.php";
 
 $baseURL = "http://tiwar-id.net";
+$username = "";
+$password = "";
 
 halaman_utama:
 echo "Clear cookie\n";

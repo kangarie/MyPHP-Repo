@@ -13,7 +13,7 @@ foreach($html->find('article') as $row) {
                 $output[$i]['judul'] = trim($judul->innertext);
 
         foreach($row->find('a') as $link)
-                $output[$i]['link'] = "http:".trim($link->href);
+                $output[$i]['link'] = trim($link->href);
 
         $i++;
 };

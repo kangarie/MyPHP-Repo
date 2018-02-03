@@ -29,6 +29,32 @@ postUrl($baseURL,"login=$username&pass=$password",$baseURL."/?sign_in=1&$session
 
 halaman_beranda:
 $mark = "";
+echo "Buka halaman beranda\n";
+getUrl($baseURL);
+
+halaman_stars:
+echo "Buka halaman stars\n";
+getUrl($baseURL . "/smith/");
+$out = getUrl($baseURL . "/stars/",$baseURL."/smith/");
+$url = "";
+
+$html = str_get_html($out);
+foreach($html->find('a.btn') as $row) {
+	$url = $row->href;
+	if(strpos($url,"stars/")) break;
+}
+
+if(strpos($url,"stars/")) {
+	echo "Ada stars\n";
+	$url = $baseURL . $url;
+	echo $url . "\n";
+	$out = getUrl($url,$baseURL . "/stars");
+
+	goto halaman_stars;
+}
+else
+	echo "Tidak ada stars\n";
+
 
 halaman_league:
 echo "Buka halaman league\n";
@@ -366,9 +392,6 @@ if(strpos($url,"money")) {
 end_money:
 
 halaman_coliseum:
-//if($username=='digitec') goto end_coliseum;
-//if($username=='kucinggarong') goto end_coliseum;
-
 $heal   = 0;
 $health = 0;
 $loop   = 0;
@@ -420,7 +443,7 @@ echo "heal   = $heal\n";
 
 if($loop > 60) exit;
 
-if($health < 1500 && $heal == 0) {
+if($health < 4000 && $heal == 0) {
 	$html = str_get_html($out);
 	unset($url);
 	foreach($html->find('a') as $row) {

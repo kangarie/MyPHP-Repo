@@ -392,8 +392,6 @@ if(strpos($url,"money")) {
 end_money:
 
 halaman_coliseum:
-//if($username=='digitec') goto end_coliseum;
-//if($username=='kucinggarong') goto end_coliseum;
 
 $heal   = 0;
 $health = 0;
